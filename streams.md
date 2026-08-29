@@ -196,10 +196,10 @@ notes:     —
 
 ### btc-price: Bitcoin spot price
 category:  crypto-flows-onchain
-impact:    BTC price (feedback)
-polarity:  amplifier: this is BTC price itself — the anchor every other stream points to, read for level and trend, not as a driver with its own direction
+impact:    — (this IS BTC price — the terminal node every other stream points toward)
+polarity:  — (anchor, not a driver: the price is the level "bullish/bearish" is measured against, so it has no direction of its own)
 fetch:     source: spot BTC from a primary exchange index (Coinbase / a reputable aggregate) · depth: last 7 daily closes + the latest intraday high/low · type: numeric
-notes:     the report's anchor; every other stream's Steps count is its distance to this row
+notes:     the report's anchor — the Reporter states the current level and trend and sorts the table toward it; every other stream's Steps count is its distance to this row
 
 ### spot-etf-flows: Spot ETF flows
 category:  crypto-flows-onchain

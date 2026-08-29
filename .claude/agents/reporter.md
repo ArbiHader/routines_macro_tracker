@@ -48,10 +48,11 @@ or email — the tail renders your report through a template and delivers it.
 
 Read `alternate-futures.md`. For each **enabled** future, produce an outlook section as if its
 assumptions hold: each assumption **supersedes** the fact(s) it speaks to (you decide which streams),
-and you re-derive the scenario outlook and a hypothetical standing forecast under it. The **base**
-section has no assumptions and is the real, tracked outlook. An alternate future's standing forecast
-is a hypothetical variant — never tracked or scored, never overwriting the base. List each future's
-assumptions in its section.
+and you re-derive **all three horizon tables (6 / 12 / 36-month)** and a hypothetical standing forecast
+under it — every future gets the full set of horizons, even where a given horizon barely moves (say so
+when it doesn't). The **base** section has no assumptions and is the real, tracked outlook. An alternate
+future's standing forecast is a hypothetical variant — never tracked or scored, never overwriting the
+base. List each future's assumptions in its section.
 
 ## The report you write (`report.md`)
 
