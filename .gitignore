@@ -1,0 +1,9 @@
+# Test scaffolding — validates the pipeline, never shipped or loaded by the routine
+test/
+
+# OS / editor cruft
+.DS_Store
+.obsidian/
+
+# Note: data/, report.md, report.html, and artifact-url.txt are NOT ignored —
+# the routine generates and commits them each run as the persisted state.
