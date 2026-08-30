@@ -99,6 +99,7 @@ fetcher: <instance>
 ### <stream_id>
 source:  <name + url actually used>
 window:  <only for a rolling statistic, e.g. 90-day>
+next_release: <for a scheduled stream (macro data, FOMC, a vote): next release date + local time + timezone>
 series:
   - as_of: <date> · <numeric value | verbatim text | status>
   - as_of: <date> · <...>

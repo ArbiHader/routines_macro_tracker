@@ -25,6 +25,9 @@ task** — one of: `macro-monetary`, `cross-asset`, `crypto-structural`, `crypto
        FOMC vote composition + dissenters). Never summarize or paraphrase.
      - **status** — the current state plus a short recent-change log.
    - For a rolling statistic, record the `window` (e.g. 90-day).
+   - If the stream has a **scheduled release** (macro data, FOMC, a vote — the source publishes a release
+     calendar), also record its `next_release`: the next release date and time from that calendar. A
+     scheduled date is a fact, not interpretation.
 3. **Verify at the source.** Because the Reporter cannot search, all source work is yours:
    - Prefer the primary/authoritative source; if only a secondary one is available, say so.
    - If today's value conflicts with the on-file/previous reading, do the primary-source check to

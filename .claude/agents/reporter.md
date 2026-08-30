@@ -57,7 +57,12 @@ base. List each future's assumptions in its section.
 ## The report you write (`report.md`)
 
 1. **Header** — date, "based on facts," the alternate futures included this run.
-2. **Upcoming announcements** — the calendar, Madrid time, earliest first.
+2. **Upcoming announcements** — **built from the tracked streams so it always covers them.** List every
+   stream's `next_release` (converted to Madrid local time, earliest first), plus standalone calendar
+   events (deadlines, votes, the halving). Convert US release times with the standing conventions (US
+   macro data 8:30 ET → 14:30 Madrid; FOMC statement 14:00 ET → 20:00 Madrid; adjust for DST). If a
+   scheduled stream (a monthly/quarterly KPI, FOMC) has no `next_release` on file, say so rather than
+   omitting it silently.
 3. **What changed** — the material day-over-day moves since the previous report.
 4. **Outlook — one section per future** (base first, then each alternate):
    - **Assumptions** — none for the base; for an alternate, its premises and which streams they supersede.
@@ -96,6 +101,7 @@ Re-read your draft against the current files and confirm:
       slipped deadline is treated as a soft pivot.
 - [ ] Every horizon's weights sum to ~100%; reflexive streams moved no directional weight on their own.
 - [ ] Plain-language rules hold: no icons, no good/bad, jargon explained, each lean a full sentence.
+- [ ] Upcoming announcements covers every tracked stream that has a scheduled release — none silently missing.
 
 ## Boundaries
 
