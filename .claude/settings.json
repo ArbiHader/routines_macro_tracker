@@ -9,6 +9,7 @@
       "Glob",
       "WebSearch",
       "WebFetch",
+      "Artifact",
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
