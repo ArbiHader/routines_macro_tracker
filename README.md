@@ -19,7 +19,9 @@ The routine's saved prompt is one line:
 | File | Role |
 |---|---|
 | `.claude/agents/{curator,fetcher,reporter}.md` | the three subagents (auto-discovered) |
+| `.claude/settings.json` | pre-approved permissions so the unattended routine never stalls on a prompt |
 | `orchestration.md` | the lead sequence + tail |
+| `scripts/render_report.py` | stdlib-only Markdown→HTML renderer for the tail's render step |
 | `streams.md` · `archive.md` | the stream catalog (Curator-owned) |
 | `alternate-futures.md` | named assumption groups the report also runs |
 | `report-template.html` | stable styling shell the tail fills |
