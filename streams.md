@@ -18,7 +18,7 @@ category:  macro-monetary
 impact:    fed-funds-path
 polarity:  single-direction: the Fed's communicated stance sets rate-path expectations, so a more dovish tone (more inclined to hold or cut) is bullish
 fetch:     source: FOMC statement + minutes, federalreserve.gov · depth: last 12 releases, with vote composition and dissenters · type: text
-notes:     tone is a DIFF across the statement series — the Reporter judges it; the Fetcher stores statements verbatim only
+notes:     tone is a DIFF across the statement series — the Reporter judges it; the Fetcher stores statements verbatim only. Chair changed Powell → Kevin Warsh (took office 2026-05-22); Warsh has signaled he wants markets relying less on explicit Fed forward guidance (pre-2008-style ambiguity) — expect statements/minutes to carry less of the prior explicit reaction-function language, so DIFF against Warsh-era statements, not the Powell-era baseline. His 2026-08-28 Jackson Hole remarks read hawkish on inflation ("firm, fixed" 2% PCE target).
 
 ### fed-balance-sheet: Fed balance sheet / QT-QE stance
 category:  macro-monetary
@@ -134,14 +134,14 @@ category:  crypto-structural
 impact:    BTC price
 polarity:  time-phased-pivot: creditor coins reaching the market are direct sell-side supply, so it is bearish while the payout runs; turns bullish once complete — soft, since the deadline has slipped twice
 fetch:     source: Arkham on-chain wallet balance via The Block · depth: current + change log · type: status
-notes:     the ~34,504 BTC figure is a direct wallet balance, not a subtraction; treat the Oct 31 deadline as soft (two prior extensions)
+notes:     the ~34,504 BTC figure is a direct wallet balance, not a subtraction; treat the Oct 31, 2026 deadline as soft — this is the third postponement from the original 2023 deadline (2024 → 2025 → 2026)
 
 ### strategic-bitcoin-reserve: US Strategic Bitcoin Reserve policy
 category:  crypto-structural
 impact:    BTC price
 polarity:  event-resolution: the government keeping its coins instead of selling them (and any accumulation) is bullish
 fetch:     source: SBR executive order + Treasury/White House statements · depth: current + change log · type: status
-notes:     —
+notes:     as of this run the SBR is a hold-only directive (~328,372 BTC from seizures/forfeitures), not an accumulation mandate — Treasury stated the US "won't be buying" more; Treasury and Commerce are in an unresolved turf war over who administers it. Open-market purchases would require the BITCOIN Act (Senate) or its House companion (Begich's ARMA) to pass — track passage odds, not the current hold-only baseline, as the bullish trigger.
 
 ### halving-timeline: Halving schedule
 category:  crypto-structural
@@ -207,6 +207,13 @@ impact:    BTC price (feedback)
 polarity:  single-direction: net inflows are bullish — but as a Tier-4b amplifier (moved by price as much as it moves price), read it as magnitude, not an independent cause
 fetch:     source: daily ETF net-flow trackers (Farside / SoSoValue) · depth: last 10 daily · type: numeric
 notes:     —
+
+### stablecoin-supply: Aggregate stablecoin supply
+category:  crypto-flows-onchain
+impact:    BTC price (feedback)
+polarity:  single-direction: aggregate stablecoin market cap is the pool of fiat-equivalent, ready-to-deploy on-ramp liquidity sitting in the crypto system, so a growing supply is bullish and a contracting one (net redemptions leaving crypto rails) is bearish — read as flow magnitude, not an independent macro cause
+fetch:     source: DefiLlama Stablecoins dashboard + issuer transparency reports (Tether, Circle) · depth: last 8 weekly readings · type: numeric
+notes:     added 2026-09-01 after supply fell ~$14.6B from the May-2026 $322B peak, the sharpest contraction since Terra (confirmed via news.bitcoin.com, cryptonews.net, gncrypto.news independently) — driven by new federal stablecoin rules eliminating yield on USDT/USDC, pushing yield-seeking capital into tokenized T-bill/money-market products. Distinguish that kind of adjacent rotation (less clearly bearish, capital stays crypto-adjacent) from capital actually exiting crypto entirely — the source data alone won't make that distinction, so flag it as a judgment call for the Reporter.
 
 ### corporate-treasuries: Corporate treasury accumulation
 category:  crypto-flows-onchain
@@ -306,7 +313,7 @@ category:  geopolitical
 impact:    BTC price (fast path)
 polarity:  event-resolution: the conflict/blockade calming down is bullish; escalation (tanker attacks, closure) is bearish via a fast risk-off shock
 fetch:     source: multiple outlets, primary where possible · depth: current status + recent-change log · type: status
-notes:     —
+notes:     this is no longer a latent risk — an active US-Iran war ("Operation Epic Fury") began 2026-02-28 and passed its 6-month mark in late August 2026; Iran claims the Strait remains closed and requires its coordination for passage, shipping traffic stays well below normal, and 70+ attacks on commercial shipping have been recorded. Oman/Qatar are mediating a possible temporary shipping corridor. Track for a ceasefire/corridor deal (bullish) vs. further escalation (bearish), not a binary "war starts" trigger — that already happened.
 
 ### russia-nato: Russia–NATO tension
 category:  geopolitical
@@ -341,7 +348,7 @@ category:  geopolitical
 impact:    BTC price (fast path)
 polarity:  event-resolution: things returning to normal is bullish; a regional flare-up is bearish
 fetch:     source: multiple outlets · depth: current status + change log · type: status
-notes:     currently mostly settled / domestic-regional, not a global market mover
+notes:     the acute shock already happened — US forces captured Maduro on 2026-01-03 in a large-scale strike ("Operation Absolute Resolve"); he faces narco-terrorism charges in the SDNY. Delcy Rodríguez is acting president; the US (via Rubio) is running a 3-phase stabilization/transition plan, with talks that began 2026-08-06. Situation remains domestically unstable (reports of intensified repression) but there is no active US military conflict as of this run — watch for a fresh flare-up (bearish) or a settled transition (bullish), not the already-priced capture event.
 
 ### us-infra-cyber: US critical-infrastructure cyberattack risk
 category:  geopolitical
