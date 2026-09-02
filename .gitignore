@@ -7,3 +7,8 @@ test/
 
 # Note: data/, report.md, report.html, and artifact-url.txt are NOT ignored —
 # the routine generates and commits them each run as the persisted state.
+
+# The Reporter's intermediate draft — a harness restriction blocks subagents from
+# writing files matching a report/summary filename pattern, so the Reporter writes
+# here and the tail promotes it to report.md. Transient, never committed.
+outlook-draft.md

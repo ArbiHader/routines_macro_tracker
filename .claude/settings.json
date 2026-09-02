@@ -2,6 +2,7 @@
   "permissions": {
     "allow": [
       "Task",
+      "Agent",
       "Read",
       "Write",
       "Edit",
@@ -10,12 +11,16 @@
       "WebSearch",
       "WebFetch",
       "Artifact",
+      "mcp__Gmail__send_message",
+      "mcp__Gmail__get_message",
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(git status:*)",
       "Bash(git diff:*)",
       "Bash(git log:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
       "Bash(python3 scripts/render_report.py:*)"
     ],
     "deny": [

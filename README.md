@@ -27,6 +27,7 @@ The routine's saved prompt is one line:
 | `report-template.html` | stable styling shell the tail fills |
 | `project-schemas.md` | reference: the file shapes (not loaded at runtime) |
 | `data/*.md` · `report.md` · `report.html` · `artifact-url.txt` | produced each run |
+| `outlook-draft.md` | the Reporter's output — a harness restriction blocks subagents writing report-named files, so it writes here and the tail copies it to `report.md`; transient, gitignored, never committed |
 
 ## Setup requirements (on the routine)
 
