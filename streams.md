@@ -334,7 +334,7 @@ category:  geopolitical
 impact:    BTC price (fast path)
 polarity:  event-resolution: tensions easing is bullish; a blockade or military action is bearish via a fast shock
 fetch:     source: multiple outlets, primary where possible · depth: current status + change log · type: status
-notes:     —
+notes:     Xi Jinping is scheduled for a White House summit with Trump on Sept 24, 2026 (his first US visit since 2023, following Trump's May 2026 Beijing visit) — confirmed independently (Fox News, US News). Arms-sales-to-Taiwan disputes have twice caused US concessions ahead of Trump-Xi meetings this year; watch this date for either a de-escalatory signal or a fresh flashpoint if arms sales are announced beforehand.
 
 ### north-korea: North Korea
 category:  geopolitical
