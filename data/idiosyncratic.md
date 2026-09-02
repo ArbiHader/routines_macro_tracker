@@ -1,21 +1,14 @@
-# idiosyncratic readings — run 2026-09-01
+# idiosyncratic readings — run 2026-09-02
 fetcher: idiosyncratic
 
 ### idiosyncratic-scan
-source:  broad open-ended search (multiple outlets) — CertiK, CoinTimes, cybernews, BeInCrypto, Fortune, The Block (via search snippets), Cryptoslate, Turkish Minute, DOJ press releases, AmericanBanker, The Block (Ardoino/KPMG coverage)
-depth:   current + recent-change log
-type:    status
+source:  broad open-ended search (web search across news aggregators, crypto trade press, DL News, CoinDesk, news.bitcoin.com, The Block, court/legal coverage) — no fixed list
 series:
-  - as_of: 2026-09-01 · status: no new confirmed major tail event (exchange hack, depeg, major-figure death/scandal, or corporate/bank collapse) found as of today beyond the items already logged below; checked broad open-ended search across hack trackers, stablecoin-news trackers, and general crypto-news homepages.
-  - as_of: 2026-08-31 · CertiK monthly report: crypto losses totaled ~$215M in August 2026 (DeFi exploits ~$144.6M of that, phishing ~$41.5M) — aggregate monthly figure, source: cryptotimes.io / CertiK.
-  - as_of: 2026-08-30 · Tectonic Protocol exploit on Cronos: attacker inflated thinly-traded TONIC token ~100x in ~20 minutes via a price-oracle/liquidity manipulation and borrowed against the inflated collateral; loss reported at $120.4M, the single largest individual incident of August per CertiK; Cronos network halted in response.
-  - as_of: 2026-08-24 · Tether-linked $120M Uruguay bitcoin mining operation reported to have collapsed amid a dispute (source: search snippet referencing Tether's Uruguay mine; independent confirmation not yet cross-checked against a primary Tether statement — flagged as needing verification).
-  - as_of: 2026-08-16 · Hong Kong's first licensed stablecoin reported to have failed a security review (source: search snippet; primary regulator statement not independently located this run — flagged as needing verification).
-  - as_of: 2026-08-14 · Tether announced completion of its first full independent audit (not just an attestation) by KPMG U.S. of Tether International's 2025 financial statements; CEO Paolo Ardoino publicly dismissed continuing critics in response coverage (source: The Block).
-  - as_of: 2026-08-11 · Faruk Fatih Özer, founder/CEO of collapsed Turkish exchange Thodex (2021 collapse, ~$2B investor funds, sentenced 2023 to 11,196 years), found dead in his cell at Tekirdağ F-Type High Security Prison, Turkey; cause (suicide vs. foul play) under investigation as of report date (source: Turkish Minute). Note: this is a legacy/2021-era exchange-collapse figure, not a new 2026 collapse.
-  - as_of: 2026-08-09 · Coinsbuy (centralized exchange) hack: >$8M drained in under an hour via a coordinated cross-chain attack hitting wallets on two blockchains near-simultaneously (source: shattered.io).
-  - as_of: 2026-08-03 · Coldcard/Coinkite hardware-wallet exploit reported, ~$116M in affected Bitcoin holdings (source: Fortune).
-  - as_of: 2026-08-03 · An active-duty FBI intelligence agent (top-secret clearance, HQ-based) arrested in connection with theft of $1M in crypto (source: CoinDesk).
-  - as_of: 2026-07-09 · The Block / Immunefi: H1 2026 crypto hack losses totaled just under $1B despite a record 207 incidents by count — logged as background context, not a new event this run.
-checked_absence: searched broad open-ended sources (hack trackers, stablecoin-depeg trackers, DOJ press releases, general crypto-news front pages) for a fresh (post-2026-08-31) exchange hack, stablecoin depeg, major-figure death/scandal, or corporate/bank collapse; nothing new found as of 2026-09-01 beyond the 2026-08-30/08-31 items already logged above. No live, still-unfolding event requiring promotion to its own stream identified this run.
-notes:   two items above (Tether Uruguay mine collapse 08-24; HK licensed-stablecoin security-review failure 08-16) were surfaced only via secondary search snippets — the underlying primary source (a Tether statement / the HK regulator's own notice) was not independently pulled this run; flagged so the Reporter treats them as lower-confidence pending primary-source verification on a future run.
+  - as_of: 2026-09-02 · status: no new fresh hack, depeg, major-figure death/scandal, or corporate/bank collapse identified as of this run. Recent-change log (items already surfaced in prior periods, included for continuity, none newly bearish today):
+      - 2026-08-09: Coinsbuy exchange hack, ~$8M drained (Shattered.io); July 2026 total hack losses ~$247.4M across incidents (Immunefi H1-2026 report cites ~$972M / 207 incidents for H1 2026 overall).
+      - 2026-07-30: Coldcard-related exploit drained 1,196 BTC addresses in 41 minutes, ~1,082.65 BTC (~$70.2M at the time).
+      - 2026-07-23: BitMEX (Arthur Hayes co-founded derivatives exchange) announced it will cease operations at 04:00 UTC on 2026-09-23 — a scheduled shutdown, not a collapse/insolvency; no fraud or hack cited in coverage found.
+      - 2026-02-01 (dated): Metropolitan Capital Bank & Trust (Chicago), first US bank failure of 2026, ~$261.1M total assets, ~$212.1M deposits; FDIC receiver, First Independence Bank (Detroit) assumed most deposits.
+      - Crypto-executive legal items (older, already priced): Thodex (Turkey) founder Faruk Fatih Özer found dead in prison (date per DL News coverage, prior to this run); Goliath Ventures CEO Christopher Alexander Delgado arrested Feb 2026 on $328M Ponzi wire-fraud/money-laundering charges; MoneyFlip CEO Marcos Arturo Kleiman Tronllan arrested Miami 2026-07-30 (murder-for-hire charge, unrelated to exchange operations).
+      - Stablecoin supply contraction (~$14.6B off the May-2026 $322B peak) is already tracked as its own stream (stablecoin-supply, category crypto-flows-onchain) — not duplicated here.
+checked_absence: searched broadly (exchange-hack, depeg, executive death/scandal, bank/corporate-collapse angles) as of 2026-09-02; nothing new clearing the bar for a fresh tail-event beyond the already-known items logged above, none of which are new as of today's run.
