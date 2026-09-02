@@ -1,157 +1,133 @@
-# crypto-flows-onchain readings — run 2026-09-01
+# crypto-flows-onchain readings — run 2026-09-02
 fetcher: crypto-flows-onchain
 
-note: Direct WebFetch access to most named primary sources (coinbase.com, coingecko.com,
-farside.co.uk, defillama.com, alternative.me, coinglass.com, bitcointreasuries.net,
-theblock.co, tradingeconomics.com, finance.yahoo.com, fortune.com, coindesk.com) was
-blocked by the network egress proxy this run ("EGRESS_BLOCKED" on every direct fetch
-attempt). All readings below were obtained via web search of/about those same primary
-sources (search-engine-surfaced snippets naming the primary source and its figure), not
-by reading the primary page directly. Flagged per-stream where this materially limited
-depth (fewer daily points than the spec's depth calls for).
-
 ### btc-price
-source:  web-search aggregation of CoinDesk (BTC Price Index), Fortune "Current price of
-         Bitcoin" daily series, CoinGecko, CoinMarketCap, Kraken — direct fetch of
-         coinbase.com and coingecko.com blocked by egress proxy; CoinDesk (a reputable
-         aggregate index) used as the primary reference price
+source: CoinDesk (coindesk.com/price/bitcoin), Fortune daily BTC price series, CoinGecko (coingecko.com/en/coins/bitcoin) — cross-checked; direct fetch to coindesk.com/coingecko.com blocked by network egress proxy at run time, so values are as captured via search-indexed snapshots of those sources, not a direct live pull
 series:
-  - as_of: 2026-08-26 · $78,745.95 (Fortune)
-  - as_of: 2026-08-27 · $79,707.18 (Fortune, 7:15am ET; +$961.23 vs prior day)
-  - as_of: 2026-08-28 · $79,132.61 (Fortune, 6:30am ET); intraday high ~$81,455 reported same day (3-month high)
-  - as_of: 2026-08-29 · fell below $78,000 intraday (no single exact print found; described as "sharp reversal" off the ~$81,455 high)
-  - as_of: 2026-08-30 · ~$78,231.51 (Fortune, Sunday)
-  - as_of: 2026-08-31 · $78,414.14 (Fortune, 8:30am ET)
-  - as_of: 2026-09-01 · $78,769.60 (search-aggregated live read); CoinDesk article same day: "steady above $78,000," 24h range ~$77,200–$79,200; other same-day aggregator reads: CoinGecko $78,838.74, CoinMarketCap $78,089.74, Kraken $79,225.00, CoinDesk BPI alt-read $78,173.52
-conflict: cross-aggregator spread on 2026-09-01 spans $78,089.74–$79,225.00 (normal exchange/index dispersion, all mutually consistent with "~$78K–79K, steady"). One Binance-labeled search snippet returned $99,887.18, which is inconsistent with every other source and with CoinDesk's own article text ("Bitcoin steady above $78,000") — treated as unreliable/stale search artifact and discarded, not used as the reading.
+  - as_of: 2026-09-01 · $77,648.17 (9:43am EDT, CoinDesk); separately CoinGecko showed $77,157.03 (-2.30% 24h) same day
+  - as_of: 2026-08-31 · $78,414.14 (8:30am ET, Fortune/CoinDesk-sourced)
+  - as_of: 2026-08-30 · ~$78,231.51 (+0.75% 24h)
+  - as_of: 2026-08-29 · $77,838 (-3.01% on the day, post-Jackson Hole/Warsh selloff; intraday low near $77,000 per other outlets)
+  - as_of: 2026-08-28 · opened $80,261.86 (highest opening since 2026-05-15, 3-month high), intraday high ~$81,455, fell back to close ~$79,560
+  - as_of: 2026-08-27 · closed within the $80,000–$82,000 band (4:00pm UTC reference window)
+  - as_of: 2026-08-26 · closed near $78,500 (below $79,000)
+conflict: no single as_of-2026-09-02 (today's) print located via search as of this run — most recent confirmed reading is 2026-09-01 ($77,648.17 CoinDesk / $77,157.03 CoinGecko, a ~$490 spread between sources same-day); no intraday high/low for 2026-09-02 found — record as not yet available rather than guessed
 
 ### spot-etf-flows
-source:  web-search aggregation citing Farside Investors / SoSoValue / CoinGlass ETF trackers and news coverage (Cointelegraph, HedgeCo, CryptoTimes, BingX) — direct fetch of farside.co.uk, sosovalue.com, coinglass.com blocked by egress proxy
+source: Farside Investors (farside.co.uk/btc/) figures as reported via search-indexed coverage (direct fetch to farside.co.uk blocked by network egress proxy); TFTC Bitcoin ETF Flow Tracker (tftc.io/bitcoin-etf-flows) for the August daily table
 series:
-  - as_of: 2026-08-25 · +$336.07M net inflow (BingX, citing +4,284 BTC); a second source's same-day figure cited elsewhere as part of a "7-day streak" narrative (exact per-source number not independently reconciled)
-  - as_of: 2026-08-26 · daily figure not found in available search results
-  - as_of: 2026-08-27 · daily figure not found in available search results
-  - as_of: 2026-08-28 · −$201.9M net outflow (HedgeCo/CryptoTimes), ending a nine-trading-day inflow streak
-  - as_of: week of 2026-08-24–28 · +$924M net inflow for the week (KuCoin, citing SoSoValue); IBIT led with +$938M inflows for the week, total IBIT cumulative net inflows $633.6B; a differently-scoped source put the same week's total at +$853.54M ("strongest weekly inflows since mid-April 2026") — two different weekly totals found, not reconciled
-  - as_of: August 2026 (month) · +$3.03B net inflows for the month (Cointelegraph), described as strongest month since October 2025; cuts 2026 YTD net outflows to −$2.26B
-  - as_of: 2026-08-31 (cumulative) · total net assets $99.05B; cumulative (since-launch) net inflows $54.36B
-checked_absence: no September 2026 daily print found as of this run (US markets were at/near month-end; next trading-day print not yet published)
-conflict: depth spec calls for "last 10 daily" — only 2 individual daily prints (8/25, 8/28) were recoverable via search; the remainder of the window is covered only by weekly/monthly rollups, and two different sources give two different totals for the same week (8/24-28: $924M vs $853.54M). Flagged for the Reporter; not resolved to a single number here.
+  - as_of: 2026-08-31 (session reported 2026-09-01) · +$216.7M net inflow (IBIT +$205.9M, FBTC +$6.9M, BITB +$4.3M, MSTB/Grayscale BTC-Mini +$3.6M/+$9.4M, HODL -$13.4M) — return to inflows after one prior session of outflows
+  - as_of: 2026-08-19 · +$517.2M (largest single session referenced in the August table)
+  - as_of: 2026-08-18 · +$189.3M net (FBTC alone supplied $111.9M of a reported $137.3M day elsewhere in coverage — the two figures for this date are not fully reconciled from available sources)
+  - as_of: 2026-08-17 · +$297.6M
+  - as_of: month-to-date through 2026-08-19 · August 2026 cumulative net inflow ~$1.5B across 13 trading days (9 inflow days vs 4 outflow days)
+  - as_of: year-to-date, 2026 · cumulative ~$4.84B net outflows for the year as of the most recent rollup found (54% of 2026 sessions have been net-outflow days; longest outflow streak 2026-05-15 to 2026-06-03, 13 sessions, -$4.37B)
+conflict: could not obtain a complete unbroken 10-daily-observation table (2026-08-20 through 2026-08-28, and 2026-09-01 per-fund breakdown for days other than 08-31, are missing from what search surfaced) — direct fetch to farside.co.uk was blocked; recorded only the specific dated data points found rather than filling gaps
 
 ### stablecoin-supply
-source:  web-search aggregation citing DefiLlama Stablecoins dashboard — direct fetch of defillama.com blocked by egress proxy
-window:  weekly (spec asks for last 8 weekly readings)
+source: DefiLlama Stablecoins dashboard (defillama.com/stablecoins, direct fetch blocked by egress proxy — figures via search-indexed secondary coverage), StableCoin.com and Forbes trackers cross-checked
+window: weekly, per fetch spec (8 readings) — only the dated snapshots below were locatable via search; true weekly cadence not confirmed
 series:
-  - as_of: 2026-05-17 · $322.4B (all-time peak, per DefiLlama-sourced reporting)
-  - as_of: 2026-08-13 · $308.0B (up 14.3% YoY from $269.4B in Aug 2025; 4.5% below the May-2026 peak)
-checked_absence: no reading more recent than 2026-08-13, and no intervening weekly prints between 5/17 and 8/13, were found in available search results as of 2026-09-01
-conflict: this is only 2 of the requested 8 weekly readings — direct DefiLlama access being blocked prevented pulling the full weekly series; flagged as an incomplete depth for the Reporter.
+  - as_of: 2026-09-01 · $289.8B (StableCoin.com, 15:47 UTC) / $290.70B (Forbes, same-day) — the two trackers differ by ~$0.9B
+  - as_of: 2026-08-13 · $308.0B (DefiLlama, +14.3% YoY, -4.5% vs May peak)
+  - as_of: 2026-07-27 · reported as "shrank for the first time in four years" (Forbes) — no exact figure attached in source
+  - as_of: 2026-07-12 · ~$310B (-$10B since the 2026-05-17 peak, incl. -$7.7B in June alone)
+  - as_of: 2026-05-17 · $322.4B (all-time peak, DefiLlama)
+conflict: on-file note (added 2026-09-01) described the contraction as "~$14.6B from the $322B peak"; current-run figures show a larger contraction — $289.8-290.7B as of 2026-09-01 is ~$32-33B (≈10%) below the $322.4B May peak, roughly double the previously logged decline. The decline has continued/accelerated since the note was written, it is not a same-day discrepancy. Could not source a clean weekly-cadence 8-point series — only the dated snapshots above were found; USDT holds ~63.3% share, USDT+USDC ~88.6% combined (2026-09-01 composition)
 
 ### corporate-treasuries
-source:  web-search aggregation citing bitcointreasuries.net, company SEC filings/press releases, CoinDesk, Yahoo Finance — direct fetch of bitcointreasuries.net blocked by egress proxy
+source: bitcointreasuries.net + corporate filings via search-indexed coverage (Yahoo Finance, CryptoBriefing, Barchart); direct fetch to bitcointreasuries.net not attempted (other bitcointreasuries pages returned via search only)
 series:
-  - as_of: 2026-06-21 · Strategy (MSTR) peak holdings 847,363 BTC
-  - as_of: early July 2026 · Strategy sold 3,588 BTC (~$216M raised, to fund dividends on Digital Credit securities) — described as Strategy's largest BTC sale since its 2022 tax-loss transaction
-  - as_of: week of 2026-08-03–08-09 · Strategy sold 1,690 BTC for $108.6M aggregate proceeds (avg. sale price $64,262/BTC — this per-BTC figure is inconsistent with the ~$78-79K spot price prevailing that week, source discrepancy not resolved)
-  - as_of: week of 2026-08-10–08-16 · Strategy sold 3,458,866 MSTR shares for $333.7M net proceeds (equity raise, not a BTC sale)
-  - as_of: 2026-08-10 · H100 Group closed the largest M&A transaction in European public-Bitcoin-equity history, tripling its treasury to 3,506.4 BTC via zero-cash all-share deal
-  - as_of: 2026-07-31 · Trump Media & Technology Group (DJT) held ~14,139 BTC (per SEC 10-Q, including pledged coins)
-  - as_of: 2026-08-31 · Strategy total holdings 845,050 BTC (one source) / BTC value $66.6B, cost basis $63.73B (another source, same date)
-  - as_of: current · Twenty One Capital: 43,514 BTC (2nd-largest corporate holder)
-conflict: Strategy's 8/3-8/9 sale price ($64,262/BTC average) is well below the ~$78-79K spot level recorded for BTC that same week in the btc-price series above — flagged, not resolved (could be a reporting/date error in the source, or reflect an average cost basis rather than a sale-week market price).
+  - as_of: 2026-08-31 (purchase window 2026-08-24 to 2026-08-30) · Strategy (MicroStrategy) purchased 4,603 BTC for $369.7M at avg. price $80,318/BTC — ends a 10-week buying pause (last prior purchase 2026-06-15 to 2026-06-21: 520 BTC for $34.9M). Reported total holdings after purchase: 845,050 BTC. Funded via sale of 4,531,421 Class A shares ($602.8M net proceeds); $151.8M of proceeds used to buy back 1,557,177 STRC preferred shares, $50.7M to STRC dividends, $30M to cash reserves. At BTC ~$78,083, unrealized profit on the position cited as $2.25B (avg. acquisition price $75,412)
+  - as_of: 2026 (undated, current status) · Twenty One Capital holds 43,514 BTC — second-largest corporate holder
+  - as_of: 2026 (undated, current status) · institutional buying (ETFs + corporate treasuries incl. Strategy) reported running at 2.8x new mining supply in early 2026
+conflict: one older-dated search snippet ("microstrategy buys 430 more bitcoins... total holdings top 629k btc") is inconsistent with the 845,050 BTC current figure — that snippet is from an earlier point in 2026 and is stale, not a same-day conflict; not used as the current reading
 
 ### sovereign-adoption
-source:  web-search aggregation of Bitcoin Policy Institute, Bitget News, Cointelegraph coverage — no single primary registry found reachable directly
+source: bitcointreasuries.net/governments pages + coverage (Finance Yahoo, IBTimes, GL Insight, CCN) via search-indexed results
 series:
-  - as_of: current (2026) · 27 countries hold direct/indirect BTC exposure; 13 more pursuing legislative measures (Bitcoin Policy Institute-sourced figure)
-  - as_of: current · US: 328,372 BTC (largest sovereign holder, via criminal-asset confiscation) — consistent with the strategic-bitcoin-reserve stream's on-file figure
-  - as_of: current · UK: 61,245 BTC
-  - as_of: current · UAE: 30,382 BTC (sovereign wealth + mining-linked)
-  - as_of: current · El Salvador: 7,514 BTC (only country with BTC as legal tender; government reserves via open-market purchases)
-  - as_of: current · Czech National Bank: purchased $1M of BTC + other crypto as part of an experimental portfolio (date of purchase not specified in source)
-checked_absence: no new sovereign-adoption announcement found dated within the last ~2 weeks (mid-to-late August 2026) as of this run
-conflict: one search result cited "23 governments hold Bitcoin" (Bitget) vs. another citing "27 countries" (Bitcoin Policy Institute) for what reads as the same underlying claim — different counts, not reconciled; flagged for the Reporter.
+  - as_of: 2026 (current status) · El Salvador holds ~7,663 BTC via its Bitcoin Office, which continues posting daily purchase-themed social posts, but the public sector has not executed a net new BTC purchase since 2025-02 (per the $1.4B IMF program terms); described as "the only country directly buying Bitcoin among 13 BTC-holding nations" in one source, which appears to conflict with the "no purchases since Feb 2025" characterization in another — both traced to search-indexed coverage, not reconciled
+  - as_of: 2026 (current status, trailing ~18 months) · Bhutan has sold roughly $1B of its BTC holdings over the past ~18 months (net seller, not buyer, despite still being described elsewhere as the world's 3rd-largest sovereign holder at 12,062 BTC as of 2025-06)
+  - as_of: 2025-10 (background, not current-period news) · France lawmakers proposed a national BTC Strategic Reserve bill
+checked_absence: no new sovereign accumulation announcement (a state newly adopting or actively buying) found as of 2026-09-02; the two active sovereign programs found (El Salvador, Bhutan) are both currently non-accumulating or net-selling
 
 ### mvrv
-source:  web-search aggregation citing Glassnode MVRV — direct fetch of studio.glassnode.com blocked by egress proxy
+source: Glassnode MVRV (studio.glassnode.com/charts/market.Mvrv) figures via search-indexed secondary coverage (AhaSignals, CryptoPotato); direct fetch to studio.glassnode.com not attempted (blocked-domain pattern seen elsewhere)
 series:
-  - as_of: 2026-08-08 · MVRV 1.24 (market value ~24% above realized value); realized price ~$52,330; short-term-holder MVRV 0.96 (below cost basis); long-term-holder MVRV 1.32 (above cost basis)
-  - as_of: dated imprecisely, "June 2026" per source (KuCoin) · MVRV ~1.1, described as "nearing past market bottoms"
-checked_absence: no MVRV reading dated later than 2026-08-08 found in available search results as of 2026-09-01
+  - as_of: 2026-08-28 · ~1.5 (BTC near $79,000) — "modest by historical standards," has not confirmed a clean accumulation-zone bottom
+  - as_of: 2026-08-08 · 1.24 (raw MVRV ratio)
+  - as_of: 2026-08-08 · MVRV Z-Score separately reported at 0.42 (a related but distinct metric, noted for context not substitution)
 
 ### puell-multiple
-source:  web-search aggregation citing Glassnode/MacroMicro Puell Multiple — direct fetch blocked by egress proxy
+source: Glassnode Puell Multiple, via secondary aggregator (MacroMicro, en.macromicro.me/series/8112) — search-indexed, direct fetch not attempted
 series:
-  - as_of: 2026-08-26 · Puell Multiple 0.9451 (BTC price cited alongside as $78,051, consistent with the btc-price series above)
-  - as_of: 2026-07-28 · Puell Multiple 0.65
-checked_absence: no reading later than 2026-08-26 found as of this run
+  - as_of: 2026-08-26 · 0.9451 (miner revenue below its 365-day average)
+conflict: fetch spec calls for current + prior; only one dated observation was locatable via search — no prior-period Puell value found as of this run
 
 ### exchange-netflows
-source:  web-search aggregation citing CryptoQuant exchange-reserve/netflow data — direct fetch of cryptoquant.com blocked by egress proxy
+source: CryptoQuant Exchange Netflow/Reserve charts (cryptoquant.com/asset/btc/chart/exchange-flows) via secondary coverage (Coin-Turk); direct fetch not attempted for cryptoquant.com
 series:
-  - as_of: late April 2026 · exchange reserves (aggregate) fell to a 2026 low of ~617,000 BTC
-  - as_of: through August 2026 · reserves reversed and rose; Binance reserves specifically rose to ~687,000 BTC, its highest 2026 mark
-checked_absence: no day-by-day netflow figures (spec asks for last 7 daily) were recoverable via search; only the reserve-level trend above was found — flagged as an incomplete depth for the Reporter.
+  - as_of: 2026-08 (trend through month) · Binance BTC reserves rose to ~687,000 BTC, the highest mark for 2026, having bottomed near 617,000 BTC in late April 2026 before reversing and accelerating higher through August — described as increasing available BTC supply on exchanges, coinciding with price resistance near $80,000
+conflict: fetch spec calls for last 7 daily netflow readings (a flow metric); only an exchange-reserve trend (a stock/level metric, not a daily netflow figure) was locatable via search — no daily netflow series found as of this run, recorded the closest available on-chain reading instead of guessing at daily figures
 
 ### funding-rates
-source:  web-search aggregation citing CoinGlass / MacroMicro / CryptoQuant aggregated perp funding — direct fetch of coinglass.com blocked by egress proxy
+source: Coinglass aggregated BTC perpetual funding (coinglass.com/FundingRate/BTC); direct fetch blocked by network egress proxy, and no dated September 2026 figure was located via search
 series:
-  - as_of: 3rd week of August 2026 (period description) · funding positive in 88 of the prior 90 eight-hour windows; annualized rate running ~8-15%
-  - as_of: 2026-08-20 · that crowded short positioning (note: source text says "short positioning" despite describing positive/long-leaning funding immediately prior — as-stated, not reconciled) unwound in a short squeeze: $1.74B in short liquidations over 24h
-  - as_of: 2026-08-28 · funding rate −0.0048% (MacroMicro), i.e. slightly negative
-checked_absence: no daily print later than 2026-08-28, and no full 7-day daily series, found as of this run — flagged as incomplete depth for the Reporter.
-conflict: the "positive 88/90 windows, 8-15% annualized" read (mid-to-late August) sits awkwardly next to the −0.0048% read dated 2026-08-28 — could reflect the post-squeeze reset on 8/20, not resolved further here.
+  - as_of: 2026-02-28 (background only, not current) · funding rates fell to -6%, a 3-month low at that time — cited only for definitional context, not as a current reading
+checked_absence: no current (late-August/September 2026) funding-rate figure located via search or direct fetch as of this run — Coinglass access is blocked at the network level; recording as no current value found rather than substituting the stale February figure
 
 ### futures-oi-liquidations
-source:  web-search aggregation citing CoinGlass aggregated OI + liquidations — direct fetch of coinglass.com blocked by egress proxy
+source: Coinglass aggregated OI + liquidations (coinglass.com/currencies/BTC/futures, coinglass.com/liquidations/BTC) via search-indexed coverage; direct fetch blocked by network egress proxy
 series:
-  - as_of: mid-August 2026 · a liquidation event: crypto-wide futures OI dropped $3B, triggering $308M in liquidations; BTC futures specifically accounted for ~$24B of total OI at that time
-  - as_of: 2026-08-20 · $1.74B in short liquidations over 24h (see funding-rates stream, same event)
-  - as_of: 2026-09-01 · total BTC futures open interest $54,823,090,541 (CoinGlass, per search snippet)
-checked_absence: no itemized daily OI series (spec: current OI + recent liquidation events, satisfied) beyond the points above
-conflict: the mid-August BTC-specific OI figure (~$24B) and the 2026-09-01 BTC OI figure ($54.8B) imply more than a doubling of BTC futures OI in roughly two weeks — plausible given price recovery/relevering but large enough to flag as a discrepancy worth the Reporter's attention rather than face-value trend.
+  - as_of: 2026-08-30 · aggregate BTC futures open interest $54.82B (695,020 BTC) across venues — Binance 142,500 BTC ($11.24B, 20.5% share), CME 116,040 BTC ($9.15B), MEXC $5.01B, Bybit $4.58B, Gate $4.57B, OKX $2.79B, Bitget $2.16B, KuCoin $1.62B
+  - as_of: 2026-08-29 · ~$487.68M in liquidations across the crypto market over 24h (97,691 traders affected), long positions >$360M of that total, following the Warsh Jackson Hole speech
+  - as_of: 2026-08-25 · BTC open interest (coin terms) at a 5-month low of ~587,600 BTC even as price was still climbing; margin OI at a record low near 52,000 BTC
+  - as_of: 2026-09-01/02 · a separate, unattributed-date figure found: OI $47.75B with $46.28M in 24h liquidations, alongside another figure of OI $54.30B — the two OI figures in this snippet are inconsistent with each other and not clearly dated; recorded for completeness but flagged as unreliable
+conflict: the 2026-09-01/02 OI figures are internally inconsistent ($47.75B vs $54.30B in the same source snippet) and could not be resolved to a single value — use the dated 2026-08-30 figure ($54.82B) as the more reliable current reading
 
 ### options-vol-skew
-source:  web-search aggregation citing Deribit DVOL + 25-delta skew (via Laevitas/Glassnode/CryptoGamma coverage) — direct fetch of deribit.com/insights and studio.glassnode.com blocked by egress proxy
+source: Deribit DVOL + 25-delta skew (insights.deribit.com, studio.glassnode.com/charts/derivatives series) via search-indexed coverage (CoinDesk, TradingView); direct fetch not attempted for deribit.com/glassnode.com
 series:
-  - as_of: 2026-07-07 · 25-delta skew: 25Δ put −3.00% vs 25Δ call +3.00% (net skew flagged "Neutral — put skew within normal range")
-checked_absence: no DVOL level or skew reading dated in August or September 2026 was found in available search results as of 2026-09-01 — this is a stale (55-day-old) reading; flagged as a real gap, not a current value.
+  - as_of: 2026-08-29 (Friday, Jackson Hole/$6.4B options-expiry day) · DVOL surged from ~35% to a peak of ~65% intraday — the sharpest DVOL move since early 2023
+  - as_of: 2026-09-01/02 (most recent found) · DVOL "cooled down to 43%" per the same source thread (exact date of this reading not separately confirmed)
+  - as_of: 2026-08 (week preceding the above) · during BTC's move from ~$62,000 to ~$80,000, the volatility term structure shifted from backwardation to contango and call-put skew flipped from negative to positive (more call demand than put demand) — described qualitatively, no numeric skew value found
+conflict: fetch spec asks for numeric current + prior; only descriptive/relative DVOL levels (35% → 65% → 43%) were locatable, and the skew reading is qualitative only (direction, not a numeric 25-delta value) — recorded as found rather than inventing a number
 
 ### fear-greed
-source:  web-search aggregation citing alternative.me Crypto Fear & Greed Index and several secondary trackers (feargreedmeter.com, CoinMarketCap, Bitget) — direct fetch of alternative.me blocked by egress proxy
+source: alternative.me Crypto Fear & Greed Index (alternative.me/crypto/fear-and-greed-index) — direct fetch blocked by network egress proxy; values below via search-indexed secondary trackers (BitDegree, CFGI.io, FearGreedMeter, Milkroad) that cite or mirror alternative.me
 series:
-  - as_of: 2026-08-31 · 50 (Neutral) — closest dated alternative.me-attributed figure found
-  - as_of: dated only "today" in one snippet (ambiguous, possibly 2026-08-31 or 2026-09-01) · 62 (Greed), "down 7 points" (feargreedmeter.com)
-  - as_of: undated snippet, same query batch · 51 (Neutral, CoinMarketCap-attributed) and 73 (Greed, unspecified attribution)
-checked_absence: no single unambiguous 2026-09-01-dated alternative.me print was recoverable
-conflict: four different values (50, 51, 62, 73) surfaced across trackers/snippets for essentially the same date window, spanning Neutral to Greed classifications — this is a materially wide spread for a single index; flagged for the Reporter rather than picked-and-averaged here. The spec's named source (alternative.me) points to 50 (Neutral) as of 2026-08-31 as the best-attributed figure.
+  - as_of: 2026-09-01 · 44 ("Fear") — per one search-indexed reading attributed to alternative.me
+  - as_of: undated (same source thread) · a separate reading of 62 ("Greed," described as a 16-point jump from a prior 46) was also found, but that snippet's price context (BTC "near $69,803") does not match the ~$77-78K level confirmed for late Aug/Sept 1 2026 — this reading is very likely from a different, earlier date mislabeled in the source and is NOT used as the current value
+  - as_of: undated · CFGI.io (a different, non-alternative.me index) separately shows 44 ("Neutral" per its own scale) same period; FearGreedMeter.com (also non-alternative.me) shows 69 ("Greed") — cited only to show cross-tracker spread, not substituted for the alternative.me reading
+conflict: direct access to alternative.me was blocked at the network level, so the primary source itself could not be verified directly this run; the 44 ("Fear") reading as of 2026-09-01 is the best-supported figure (consistent with the post-Jackson-Hole selloff context of 2026-08-29 onward), but it is a secondary-source characterization of alternative.me, not a direct pull — flagged per the "verify at primary source" rule since primary access failed
+checked_absence: no alternative.me reading specifically for 2026-09-02 located; last confirmed dated reading is 2026-09-01
 
 ### technical-trend
-source:  web-search aggregation citing TipRanks technical analysis page (50/200-day SMA) — direct fetch of tipranks.com blocked by egress proxy
+source: bitbo.io 50/200-day MA chart (charts.bitbo.io/50-200-day-ma) + CoinDesk golden-cross coverage — direct fetch to bitbo.io blocked by network egress proxy; figures via search-indexed secondary reporting
 series:
-  - as_of: current (2026-09, per source) · 50-day SMA $65,785.40; 200-day SMA $69,144.45; spot price cited alongside $78,927.72 (consistent with the btc-price series above); 50-day SMA is below the 200-day SMA (a "death cross" configuration by the standard definition), while spot trades above both; 200-day SMA has been sloping up since 2025-01-30
-checked_absence: no prior comparison print (spec: current + prior) was found to state the SMA levels as of a distinctly earlier date
+  - as_of: 2026-08 (most recent found) · 50-day SMA ≈ $65,785–66,000; 200-day SMA ≈ $69,005–69,144 — BTC price (~$77-78K late Aug/early Sept) trades above both averages; 200-day SMA reported rising since 2026-08-28
+  - as_of: 2026-08-20 · golden cross not yet confirmed but the 50-day/200-day gap continues to narrow (50-day was rising toward the 200-day from below)
+  - as_of: background (2025-10) · BTC had been trading below its 200-day SMA since Oct 2025 (price then ~$110,000), i.e. the "death cross" state this golden-cross setup would reverse
+conflict: minor inconsistency in exact SMA levels across sources ($65,785.40/$69,144.45 in one figure vs "$65,000"/"$69,000" rounded in another, and one snippet citing 50-day at "$63,976") — figures cluster tightly enough ($65-66K / $69K) to treat as the same reading from slightly different capture times, not a real conflict
 
 ### altcoin-dominance
-source:  web-search aggregation citing BeInCrypto (Bitcoin dominance) and an Altcoin Season Index tracker — direct fetch of the underlying dashboards blocked by egress proxy
+source: Bitcoin dominance (BTC.D) + Altcoin Season Index (blockchaincenter/CMC-style index), via search-indexed coverage (BeInCrypto, Bitget, Phemex, bitcoinfoundation.org)
 series:
-  - as_of: current (last full week, per source) · BTC dominance closed the week at 60.15-60.66% (two figures cited across sources), described as breaking above 60% after an eight-month accumulation phase, targeting the 66% cycle high from June 2025
-  - as_of: current · Altcoin Season Index: 37 (Bitcoin Season territory; altseason threshold is 75)
-conflict: BTC dominance cited as both 60.15% and 60.66% for what appears to be the same "last week close" — not reconciled, flagged.
+  - as_of: 2026-08 (most recent found) · BTC dominance ~60.15-60.66%, having broken out above 60% and ending an eight-month accumulation phase, targeting the 66% cycle high from June 2025; Altcoin Season Index reads ~35 (below the 40-below range cited elsewhere), well under the 75 threshold that defines altseason
+  - as_of: earlier August 2026 reading (undated within month) · BTC dominance cited elsewhere as "58%" and "mid-to-high 50s," Altcoin Season Index "below 40" — the dominance figures across sources range 58-60.66%, not fully reconciled to a single day
+conflict: multiple BTC-dominance figures (58%, 59.9%, 60.15%, 60.66%, 65%) and Altcoin Season Index figures (35, "below 40") appear across sources without consistent dating — recorded the range rather than picking one number as ground truth; the qualitative read (Bitcoin Season, altseason unlikely before end of 2026) is consistent across all of them
 
 ### social-retail-sentiment
-source:  web-search aggregation citing LunarCrush — direct fetch of lunarcrush.com blocked by egress proxy
+source: Santiment (app.santiment.net social-volume/sentiment data) via search-indexed coverage (CoinMarketCap Academy, Bitbo); direct fetch not attempted
 series:
-  - as_of: current (trailing 24h, per source) · 159.9M engagements, 106.3K posts, 73% positive social sentiment (LunarCrush)
-  - as_of: early 2026 (dated snippet, not September) · top mindshare drivers were Geopolitics (30%, Venezuela-US developments), Michael Saylor/accumulation talk (25%), BTC price outlook (20%) — this breakdown is from an earlier-2026 dated post, not current; included for reference only, not as a current reading
-checked_absence: no September-2026-dated qualitative sentiment breakdown found; only the trailing-24h aggregate stat above is current as of this run
+  - as_of: 2026-08 (week noted as "This Week in Crypto, W2 Aug '26") · BTC's positive-to-negative social comment ratio stayed below 1.0 every day since a referenced "Cold Card hack," producing the most negative sentiment week since Santiment's social data began
+  - as_of: 2026-01 (background, not current) · social sentiment had begun 2026 strong/"very positive" (20% rise in positive mentions since Jan 1), which had preceded a period Santiment flagged as a caution signal for sustained upside
+checked_absence: no sentiment reading specifically dated to late Aug/Sept 2026 (post the "most negative week" note) located as of this run
 
 ### four-year-cycle-belief
-source:  web-search aggregation of analyst commentary (Benjamin Cowen/Into the Cryptoverse, CryptoQuant models, Joao Wedson, Peter Brandt coverage via CoinMarketCap, BeInCrypto, Altcoin Buzz, EconoTimes)
+source: analyst/positioning commentary — Benjamin Cowen (CoinMarketCap Academy, BeInCrypto), Jesse Olson chart commentary (Yahoo Finance), Alphractal and CryptoQuant model commentary, via search-indexed coverage
 series:
-  - as_of: current commentary (dated through late Aug 2026) · Benjamin Cowen's base case: cycle low in October 2026, consistent with 2014/2018/2022 midterm-year bottoming pattern; states BTC topped within one week of the historically expected peak
-  - as_of: current · Joao Wedson: targets next bottom late September–early October 2026
-  - as_of: current · CryptoQuant model: likely bottom window June–December 2026, with September–November flagged as especially probable
-  - as_of: current · cycle-length comparison cited: current cycle topped on day 1,162 from prior low, vs. day 1,059 and day 1,168 for the two prior cycles (within historical range)
-  - as_of: current · price-target range if the pattern holds: $50,000-55,000 (historical-analogy-based); one outlier scenario (NYDIG) cited $38,000-39,000 by October if the drawdown matches 2014/2018/2022 depth
-checked_absence: no dissenting ("cycle is dead"/no-bottom-expected) commentary was surfaced in this run's search results — noted as an absence, not confirmation that no such commentary exists
+  - as_of: 2026-08 (most recent found) · Benjamin Cowen's base case remains an October 2026 cycle low, consistent with prior midterm-year bottoms (2014, 2018, 2022); he states the 4-year cycle is "not dead," noting BTC topped within roughly a week of the historically expected peak date
+  - as_of: 2026-08 · Jesse Olson's cross-cycle chart (scaled to the 2024 halving) places the current cycle at ~day 775 post-halving, with every prior cycle bottoming near day ~900 — implying roughly 125 days (~4 months) until the historical bottom window opens; his chart's projected low band sits in the $40,000s
+  - as_of: 2026-08 · Alphractal targets late September/early October 2026 for a bottom; CryptoQuant's models show a high-probability bottom window spanning September-November 2026
+  - as_of: 2026-08 · a separate historical-trend citation suggests BTC could fall to a $50,000-$55,000 range before the next major bull leg, per unspecified "historical trends" framing
