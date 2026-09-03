@@ -1,5 +1,6 @@
 {
   "permissions": {
+    "defaultMode": "bypassPermissions",
     "allow": [
       "Task",
       "Agent",
@@ -11,6 +12,8 @@
       "WebSearch",
       "WebFetch",
       "Artifact",
+      "Artifact(publish)",
+      "Artifact(publish:*)",
       "mcp__Gmail__send_message",
       "mcp__Gmail__get_message",
       "Bash(git add:*)",

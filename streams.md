@@ -313,21 +313,21 @@ category:  geopolitical
 impact:    BTC price (fast path)
 polarity:  event-resolution: the conflict/blockade calming down is bullish; escalation (tanker attacks, closure) is bearish via a fast risk-off shock
 fetch:     source: multiple outlets, primary where possible · depth: current status + recent-change log · type: status
-notes:     this is no longer a latent risk — an active US-Iran war ("Operation Epic Fury") began 2026-02-28 and passed its 6-month mark in late August 2026; Iran claims the Strait remains closed and requires its coordination for passage, shipping traffic stays well below normal, and 70+ attacks on commercial shipping have been recorded. Oman/Qatar are mediating a possible temporary shipping corridor. Track for a ceasefire/corridor deal (bullish) vs. further escalation (bearish), not a binary "war starts" trigger — that already happened.
+notes:     this is no longer a latent risk — an active US-Iran war ("Operation Epic Fury") began 2026-02-28 and passed its 6-month mark in late August 2026; Iran claims the Strait remains closed and requires its coordination for passage, shipping traffic stays well below normal, and 70+ attacks on commercial shipping have been recorded. Oman/Qatar are mediating a possible temporary shipping corridor. Track for a ceasefire/corridor deal (bullish) vs. further escalation (bearish), not a binary "war starts" trigger — that already happened. Escalated further as of early Sept 2026 (confirmed via UN News, NPR, NBC's ship-traffic tracker): a brief April ceasefire broke down in July; the Strait is now effectively closed (~6 ships/day transiting vs. ~85/day normal, ~465 vessels holding position, ~6,000 seafarers stranded); Iran has widened its shipping blacklist to 56 vessels and moved to formally ban US/Israeli-linked ships while charging a toll to others; further tanker attacks (incl. one killing two Filipino seafarers) have occurred. No corridor/ceasefire deal has materialized — read the trend as still escalating, not stabilized.
 
 ### russia-nato: Russia–NATO tension
 category:  geopolitical
 impact:    BTC price (fast path)
 polarity:  background-probability: a deliberately ambiguous incident against a NATO member would raise Article-5 questions and hit risk assets fast, so no incident is bullish and an incident is bearish — the Lean states a quantified probability, not a direction
 fetch:     source: multiple outlets (CBS/CNN/WSJ), primary where possible · depth: current status + change log · type: status
-notes:     verify user-supplied leads independently; a single expert or historical parallel is not confirmation; the drone-site claim traces to a single investigation
+notes:     verify user-supplied leads independently; a single expert or historical parallel is not confirmation; the drone-site claim traces to a single investigation. Since then, confirmed via multiple outlets (NATO.int, ABC News, Al Jazeera): a pattern of Russian drone/missile incursions into NATO airspace has continued through August 2026 — four interceptions over Romania (by Aug 17), a NATO jet shootdown over Latvia (Aug 14), an unexploded drone hitting a Ukrainian cargo plane at Germany's Leipzig/Halle airport (Aug 4) — and NATO allies formally condemned the violations (Aug 12 statement) without invoking Article 5. Treat this as an escalating frequency of ambiguous incidents still below the Article-5 threshold, not a resolved risk — the background probability this stream tracks has risen, not fired.
 
 ### russia-ukraine: Russia–Ukraine war
 category:  geopolitical
 impact:    BTC price (fast path)
 polarity:  event-resolution: a genuine diplomatic breakthrough / de-escalation is bullish; major escalation is bearish
 fetch:     source: multiple outlets, primary where possible · depth: current status + change log · type: status
-notes:     mostly below the threshold that moves BTC on its own
+notes:     mostly below the threshold that moves BTC on its own. As of late Aug 2026 (Reuters/Kyiv sources), Ukraine's Budanov floated a possible resumption of trilateral (Russia-Ukraine-US) talks in September covering a ceasefire and security guarantees, but Russia's Lavrov has publicly rejected any ceasefire that freezes the current front line — track for an actual signed deal (bullish) vs. this remaining talk-about-talks (no change), not a photo-op or an announced-but-unsigned framework.
 
 ### china-taiwan: China–Taiwan tensions
 category:  geopolitical
@@ -362,7 +362,7 @@ category:  geopolitical
 impact:    BTC price (fast path)
 polarity:  event-resolution: de-escalating trade policy is bullish; a fresh tariff shock is bearish via risk-off
 fetch:     source: official announcements + coverage · depth: current status + change log · type: status
-notes:     —
+notes:     as of this run, Trump is weighing a new ~7.5% tariff on China for underpriced/dumped exports, layered on top of the 10-12.5% Section-301 tariffs on 60 countries effective 2026-07-24 — officials are calibrating the size specifically to avoid derailing the year-old US-China trade truce or the planned Trump-Xi White House summit (~Sept 24, see china-taiwan); confirmed independently (AP/Yahoo, Fortune). Watch for the announced size/timing as the next decision point, not just a binary "new tariff" trigger.
 
 <!-- ============================ idiosyncratic ============================ -->
 
