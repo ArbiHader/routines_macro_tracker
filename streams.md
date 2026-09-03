@@ -38,7 +38,7 @@ notes:     —
 category:  macro-monetary
 impact:    BTC price
 polarity:  single-direction: lower real yields make non-yielding assets like BTC relatively more attractive, so falling real yields are bullish
-fetch:     source: TIPS-implied 10y real yield (FRED DFII10) · depth: last 5 daily closes · type: numeric
+fetch:     source: FRED CSV — https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFII10&cosd=<today-14d> (10y TIPS real yield, the official daily series; no key needed) · depth: last 5 daily closes · type: numeric
 notes:     —
 
 ### treasury-issuance: Treasury issuance & buybacks
@@ -96,8 +96,8 @@ notes:     —
 category:  cross-asset
 impact:    BTC price
 polarity:  single-direction: a weaker dollar loosens financial conditions and lifts dollar-priced risk assets, so a falling dollar is bullish
-fetch:     source: ICE DXY via a primary market-data source · depth: last 5 daily closes · type: numeric
-notes:     —
+fetch:     source: ICE DXY (DX-Y.NYB) via a primary market-data source — no free unauthenticated endpoint is known, so search is expected here; label the reading secondary · depth: last 5 daily closes · type: numeric
+notes:     do NOT substitute FRED's DTWEXBGS or DTWEXAFEGS: those are trade-weighted broad-dollar indices, a different index from ICE DXY on a different scale. Swapping them silently changes both the level and the series.
 
 ### btc-nasdaq-corr: BTC–Nasdaq correlation
 category:  cross-asset
@@ -124,7 +124,7 @@ notes:     the conditional trigger is BTC beginning to track gold (corr jumped t
 category:  cross-asset
 impact:    BTC price
 polarity:  single-direction: tighter/narrower spreads signal healthy risk appetite and are bullish; widening spreads are bearish
-fetch:     source: ICE BofA US High Yield OAS (FRED) · depth: last 5 daily · type: numeric
+fetch:     source: FRED CSV — https://fred.stlouisfed.org/graph/fredgraph.csv?id=BAMLH0A0HYM2&cosd=<today-14d> (ICE BofA US High Yield OAS, the official daily series; no key needed) · depth: last 5 daily · type: numeric
 notes:     —
 
 <!-- ===================== crypto-structural (supply + regulatory) ===================== -->
@@ -198,21 +198,21 @@ notes:     —
 category:  crypto-flows-onchain
 impact:    — (this IS BTC price — the terminal node every other stream points toward)
 polarity:  — (anchor, not a driver: the price is the level "bullish/bearish" is measured against, so it has no direction of its own)
-fetch:     source: spot BTC from a primary exchange index (Coinbase / a reputable aggregate) · depth: last 7 daily closes + the latest intraday high/low · type: numeric
-notes:     the report's anchor — the Reporter states the current level and trend and sorts the table toward it; every other stream's Steps count is its distance to this row
+fetch:     source: Kraken OHLC API — https://api.kraken.com/0/public/OHLC?pair=XBTUSD&interval=1440 (721 daily candles, oldest first: [time, open, high, low, close, vwap, volume, count]); cross-check the latest level against https://api.coinbase.com/v2/prices/BTC-USD/spot and https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd · depth: last 7 daily closes + the latest candle's intraday high/low · type: numeric
+notes:     the report's anchor — the Reporter states the current level and trend and sorts the table toward it; every other stream's Steps count is its distance to this row. HARD REQUIREMENT: this stream must come from a same-day direct API read. A search-sourced, secondary, or previous-day price is NOT acceptable as the anchor — see the Fetcher's anchor rule. The coindesk.com and coingecko.com HTML pages 403/429 automated fetch; never fall back to them.
 
 ### spot-etf-flows: Spot ETF flows
 category:  crypto-flows-onchain
 impact:    BTC price (feedback)
 polarity:  single-direction: net inflows are bullish — but as a Tier-4b amplifier (moved by price as much as it moves price), read it as magnitude, not an independent cause
-fetch:     source: daily ETF net-flow trackers (Farside / SoSoValue) · depth: last 10 daily · type: numeric
+fetch:     source: NO free primary endpoint exists — Farside (farside.co.uk/btc/) is the reference table but 403s automated fetch and publishes no public API, and SoSoValue/CoinGlass require a key. Use search-indexed coverage of Farside/SoSoValue and label the reading secondary in `source` · depth: last 10 daily · type: numeric
 notes:     —
 
 ### stablecoin-supply: Aggregate stablecoin supply
 category:  crypto-flows-onchain
 impact:    BTC price (feedback)
 polarity:  single-direction: aggregate stablecoin market cap is the pool of fiat-equivalent, ready-to-deploy on-ramp liquidity sitting in the crypto system, so a growing supply is bullish and a contracting one (net redemptions leaving crypto rails) is bearish — read as flow magnitude, not an independent macro cause
-fetch:     source: DefiLlama Stablecoins dashboard + issuer transparency reports (Tether, Circle) · depth: last 8 weekly readings · type: numeric
+fetch:     source: DefiLlama API — https://stablecoins.llama.fi/stablecoincharts/all (daily series of totalCirculatingUSD.peggedUSD, oldest first; the defillama.com dashboard 403s automated fetch, the API does not) · depth: last 8 weekly readings, sampled from the daily series · type: numeric
 notes:     added 2026-09-01 after supply fell ~$14.6B from the May-2026 $322B peak, the sharpest contraction since Terra (confirmed via news.bitcoin.com, cryptonews.net, gncrypto.news independently) — driven by new federal stablecoin rules eliminating yield on USDT/USDC, pushing yield-seeking capital into tokenized T-bill/money-market products. Distinguish that kind of adjacent rotation (less clearly bearish, capital stays crypto-adjacent) from capital actually exiting crypto entirely — the source data alone won't make that distinction, so flag it as a judgment call for the Reporter.
 
 ### corporate-treasuries: Corporate treasury accumulation
@@ -254,42 +254,42 @@ notes:     —
 category:  crypto-flows-onchain
 impact:    BTC price (feedback)
 polarity:  contrarian: very high positive funding (crowded longs) is a bearish squeeze risk; neutral/negative funding is healthier — an amplifier
-fetch:     source: aggregated perp funding (Coinglass) · depth: last 7 daily · type: numeric
+fetch:     source: Binance perp funding API — https://fapi.binance.com/fapi/v1/fundingRate?symbol=BTCUSDT&limit=21 (three 8h settlements per day). This is a SINGLE-VENUE primary reading, not the Coinglass cross-venue aggregate the stream was originally specified against — say so in `source` · depth: last 7 daily · type: numeric
 notes:     —
 
 ### futures-oi-liquidations: Futures open interest & liquidations (leverage)
 category:  crypto-flows-onchain
 impact:    BTC price (feedback)
 polarity:  amplifier: not one direction — leverage makes the next big move stronger whichever way it goes, and it cuts both ways
-fetch:     source: aggregated OI + liquidations (Coinglass) · depth: current OI + recent liquidation events · type: numeric
+fetch:     source: Binance OI history — https://fapi.binance.com/futures/data/openInterestHist?symbol=BTCUSDT&period=1d&limit=7 (single-venue primary, not the Coinglass aggregate — say so in `source`). Liquidation events have no free endpoint: take them from search and label them secondary · depth: current OI + recent liquidation events · type: numeric
 notes:     currently meaningfully de-risked vs mid-August; keep downside-amplification reasoning dialled back
 
 ### options-vol-skew: Options implied vol & skew
 category:  crypto-flows-onchain
 impact:    BTC price (feedback)
 polarity:  amplifier: rising implied vol / heavy put skew signals defensive positioning and bigger moves ahead — magnitude, not direction
-fetch:     source: Deribit DVOL + 25-delta skew · depth: current + prior · type: numeric
+fetch:     source: Deribit public API for DVOL — https://www.deribit.com/api/v2/public/get_volatility_index_data?currency=BTC&start_timestamp=<ms>&end_timestamp=<ms>&resolution=43200 (returns [ts, open, high, low, close]). 25-delta skew has no free single-call endpoint (deriving it needs per-instrument greeks): take skew from search and label it secondary · depth: current + prior · type: numeric
 notes:     —
 
 ### fear-greed: Fear & Greed index
 category:  crypto-flows-onchain
 impact:    BTC price (feedback)
 polarity:  contrarian: this index works backwards — extreme fear (near the bottom) is bullish, extreme greed (near the top) is bearish
-fetch:     source: alternative.me Crypto Fear & Greed Index · depth: last 7 daily · type: numeric
+fetch:     source: alternative.me API — https://api.alternative.me/fng/?limit=7 (value + value_classification per day, newest first) · depth: last 7 daily · type: numeric
 notes:     name the historical echo when elevated (near the pre-Oct-2025-liquidation zone), not just "Greed = bearish"
 
 ### technical-trend: Technical trend (50/200-day moving averages)
 category:  crypto-flows-onchain
 impact:    BTC price (feedback)
 polarity:  self-fulfilling: enough of the market (CTAs, systematic funds, retail) trades moving-average crosses that the signal becomes real flow, so price above the 200-day average (or a golden cross firing) is bullish — watched, therefore it moves price, it does not predict it
-fetch:     source: 50-day & 200-day SMA levels stated directly by a source, sanity-checked against the SMA math · depth: current + prior print · type: numeric
+fetch:     source: computed from the same Kraken daily candles as btc-price — https://api.kraken.com/0/public/OHLC?pair=XBTUSD&interval=1440 (721 candles, enough for a 200-day SMA). Record the SMA levels and BTC's position relative to each; arithmetic on the raw closes is not interpretation, but state the closes' date range so the Reporter can check the window · depth: current + prior print · type: numeric
 notes:     an amplifier (feedback), never predictive — frame as "watched, so it creates flow"
 
 ### altcoin-dominance: Altcoin dominance
 category:  crypto-flows-onchain
 impact:    BTC price (feedback)
 polarity:  conditional: depends on where the cycle is — currently resolves to neutral (matching what's expected now)
-fetch:     source: BTC dominance / altcoin-season index · depth: current + prior · type: numeric
+fetch:     source: CoinGecko global API — https://api.coingecko.com/api/v3/global (data.market_cap_percentage.btc) · depth: current + prior · type: numeric
 notes:     —
 
 ### social-retail-sentiment: Social / retail sentiment

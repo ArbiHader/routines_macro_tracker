@@ -107,6 +107,12 @@ Re-read your draft against the current files and confirm:
 - [ ] Every horizon's weights sum to ~100%; reflexive streams moved no directional weight on their own.
 - [ ] Plain-language rules hold: no icons, no good/bad, jargon explained, each lean a full sentence.
 - [ ] Upcoming announcements covers every tracked stream that has a scheduled release — none silently missing.
+- [ ] The `btc-price` anchor is a same-day reading. If the Fetcher marked it `ANCHOR UNAVAILABLE`, or
+      its `as_of` is not today, or its `source` is marked `SECONDARY (search):`, the report says so in
+      the header and states the level as of its actual date — never as "current". Do not silently
+      anchor today's outlook to a stale price.
+- [ ] Any reading whose `source` begins with `SECONDARY (search):` is labelled as secondary where it is
+      used, and carries no more weight than that warrants.
 
 ## Boundaries
 

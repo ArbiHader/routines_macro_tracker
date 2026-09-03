@@ -66,6 +66,24 @@ parallel tool calls in one batch, not one stream after another.
   compresses meaning out of it.
 - You do not read a stream's `polarity` — that is the Reporter's. You need only `fetch`.
 
+## The anchor rule — `btc-price` is not allowed to be stale
+
+If your category is `crypto-flows-onchain`, `btc-price` is the report's anchor: the level every
+other stream's reading is measured against. A wrong anchor makes the whole report wrong, quietly.
+
+- The anchor must be a **same-day, direct-from-API** reading. Fetch it **first**, before your other
+  streams, so a failure surfaces while there is still time in the run.
+- **Never** accept for the anchor: a search-indexed snapshot, a secondary characterization, a
+  previous-day close presented as the current level, or a figure whose `as_of` is not today.
+- Cross-check the spot level against the second and third endpoints in the spec. Record all of them.
+  A spread above ~1% between sources is a `conflict`, not a rounding difference.
+- If you cannot get a same-day direct reading after trying every endpoint in the spec, write
+  `series` as `ANCHOR UNAVAILABLE — no same-day direct API reading obtained as of <date>`, list what
+  you tried and how each failed, and say so **first** in your summary to the lead. Do not fill the
+  field with the best stale number you found: an absent anchor is recoverable, a wrong one is not.
+
+This is the one stream where "record it plainly and move on" is not enough — flag it loudly.
+
 ## Boundaries
 
 - You touch only `data/<your-category>.md`. You do not edit `streams.md`, another category's file,
@@ -74,8 +92,15 @@ parallel tool calls in one batch, not one stream after another.
 - If a `fetch.source` is unreachable or no current value can be found, record that plainly
   ("source unreachable" / "no current value found as of <date>") rather than guessing or silently
   substituting a weaker source.
+- **A search result is not a substitute for a named endpoint.** When `fetch.source` names a URL,
+  fetch that URL. If it fails, you may fall back to search only when the spec says to — and then
+  `source` must begin with `SECONDARY (search):` and name what you actually read. Many crypto and
+  finance sites (coindesk.com, coingecko.com, farside.co.uk, defillama.com HTML pages) return
+  403/429 to automated fetches while their JSON APIs answer fine; if a page blocks you and the spec
+  names an API, use the API, never a search snapshot of the page.
 
 ## Output
 
 Your `data/<category>.md`, written. In your summary, note how many streams you fetched, any you
-couldn't get, and any conflicts you flagged for the Reporter.
+couldn't get, any you had to take from search rather than a named endpoint, and any conflicts you
+flagged for the Reporter. If you own `btc-price` and the anchor rule failed, lead with that.
