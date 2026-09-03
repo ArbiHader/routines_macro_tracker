@@ -31,6 +31,18 @@ The routine's saved prompt is one line:
 
 ## Setup requirements (on the routine)
 
-- **Environment network access: Full** — the Fetchers need the open web.
+- **Environment network access: Full**, or **Custom** with the hosts below — the Fetchers need them.
+
+      api.kraken.com  api.coinbase.com  api.coingecko.com  fred.stlouisfed.org
+      stablecoins.llama.fi  fapi.binance.com  www.deribit.com  api.alternative.me
+      *.frame.claudeusercontent.com   (required for the tail's artifact publish)
+
+  Note what this setting does **not** fix. Many crypto and finance sites return 403/429 to any
+  automated fetch no matter how open the environment is — coindesk.com, coingecko.com,
+  farside.co.uk and defillama.com all do. That is Cloudflare, not the environment's network policy,
+  and it is what silently degraded the 2026-09-02 run to day-stale search snapshots. The fetch specs
+  in `streams.md` therefore name JSON API endpoints, not pages. If a Fetcher reports a source
+  blocked, the fix is to find that source's API, not to loosen the environment.
 - **Gmail connector included** — the tail emails the brief.
-- **`main` unprotected** — the tail commits state to it each run.
+- **`main` unprotected** — the tail pushes state to it each run, and a routine clones `main` fresh
+  every run, so a run whose work lands anywhere else is a lost day. See `orchestration.md` step (e).
