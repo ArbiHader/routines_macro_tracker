@@ -44,7 +44,33 @@ email — the tail renders your report through a template and delivers it.
 6. **Fed tone.** The `fomc-tone` stream's series is the statement history — assess tone as a diff
    across it (this is where "hawkish/dovish" is judged) and let it inform the Fed-path lean. It is a
    row in the table, not a section.
-7. **Standing forecast.** Touch the bottom/top call only on genuinely new information; when you
+7. **Roll each area up into a net read.** After every stream's lean is resolved, group the streams by
+   their `category` — the six areas the Fetchers cover — and give each area one net direction and one
+   strength. This is a roll-up of leans you already resolved, never a fresh judgment: an area's read
+   must be consistent with its own rows in the data-streams table.
+
+   **Direction** is `bullish`, `bearish`, or `no clear direction` (use the last when the area's streams
+   genuinely disagree and neither side dominates — do not manufacture a direction to avoid it).
+
+   **Strength** is `strong`, `moderate`, or `weak`, by these tests, in order:
+   - `strong` — most of the area's streams point the same way, the read is carried by **mechanical**
+     streams (ones allowed to act as a cause), and at least one of them sits close to BTC in the impact
+     chain (few hops).
+   - `moderate` — a clear majority direction, but the drivers sit further from BTC, or a meaningful
+     stream pulls the other way.
+   - `weak` — the area is split, its readings are thin, stale, or `SECONDARY (search):` this run, or its
+     direction rests only on `(feedback)` streams.
+
+   **The reflexive cap.** An area whose read rests *only* on `(feedback)` streams can never be `strong`,
+   and its direction is stated as an amplifier — "amplifying whatever direction price already has" —
+   never as an independent cause. This is D-6 applied one level up: reflexive streams may not become a
+   directional claim just because they were grouped together.
+
+   **Always name the counter-current.** For every area, name the stream(s) pulling against the net read,
+   or say plainly that none do. An area summary that hides its internal disagreement is the
+   single-cause failure in a new costume.
+
+8. **Standing forecast.** Touch the bottom/top call only on genuinely new information; when you
    revise, log it explicitly (old → new → why) and keep the scoring windows. Score the live price
    against a window only once it has opened.
 
@@ -61,18 +87,41 @@ base. List each future's assumptions in its section.
 ## The report you write (`outlook-draft.md`, promoted to `report.md` by the tail)
 
 1. **Header** — date, "based on facts," the alternate futures included this run.
-2. **Upcoming announcements** — **built from the tracked streams so it always covers them.** List every
+2. **Where each area points** — *(once — it is fact-layer, not per-future)*. The orientation section:
+   one table, one row per area, six rows, in the order below. It exists so the reader can see the
+   current state at a glance before meeting the detail — keep it short, and never let it grow into a
+   second report.
+
+   | Area | Points toward | Strength | What carries it, and what pulls against it |
+   |---|---|---|---|
+
+   - **Area** — the plain-English name of the category, with the catalog name after it, in this fixed
+     order so the reader learns the shape: Money and the Fed (`macro-monetary`), Other markets
+     (`cross-asset`), Bitcoin's own supply and rules (`crypto-structural`), Money flowing in and out
+     (`crypto-flows-onchain`), Geopolitics (`geopolitical`), One-off shocks (`idiosyncratic`).
+   - **Points toward** — `bullish`, `bearish`, or `no clear direction`.
+   - **Strength** — `strong`, `moderate`, or `weak`, by the tests in the reasoning pass. An area
+     resting only on `(feedback)` streams says `amplifier only` in place of a strength.
+   - **What carries it** — two or three plain sentences: the streams driving the read, then the
+     counter-current ("pulling the other way: …", or "nothing material pulls against this"). Name
+     streams, don't just gesture at them.
+
+   Say in one line above the table that these are roll-ups of the per-stream leans in the final
+   section, and that a reader who wants the reasoning behind any row should go there. Do **not** add
+   an overall all-areas verdict — the Outlook's scenario weights are that judgment, and a second,
+   looser version of it here would compete with them.
+3. **Upcoming announcements** — **built from the tracked streams so it always covers them.** List every
    stream's `next_release` (converted to Madrid local time, earliest first), plus standalone calendar
    events (deadlines, votes, the halving). Convert US release times with the standing conventions (US
    macro data 8:30 ET → 14:30 Madrid; FOMC statement 14:00 ET → 20:00 Madrid; adjust for DST). If a
    scheduled stream (a monthly/quarterly KPI, FOMC) has no `next_release` on file, say so rather than
    omitting it silently.
-3. **What changed** — the material day-over-day moves since the previous report.
-4. **Outlook — one section per future** (base first, then each alternate):
+4. **What changed** — the material day-over-day moves since the previous report.
+5. **Outlook — one section per future** (base first, then each alternate):
    - **Assumptions** — none for the base; for an alternate, its premises and which streams they supersede.
    - **Scenario outlook** — the three horizon tables (6 / 12 / 36-month), weights ~100%, each with reasoning.
    - **Standing forecast** — the bottom/top call (base = tracked/scored; alternate = hypothetical variant).
-5. **Data streams** — the table: every stream, its current reading, its lean; sorted by proximity to
+6. **Data streams** — the table: every stream, its current reading, its lean; sorted by proximity to
    BTC (fewest hops first). Geopolitical flashpoints and idiosyncratic events are rows here like any
    other stream — each individually named and assessed, never collapsed into one summary row.
    `fomc-tone` is a row here too.
@@ -113,6 +162,16 @@ Re-read your draft against the current files and confirm:
       anchor today's outlook to a stale price.
 - [ ] Any reading whose `source` begins with `SECONDARY (search):` is labelled as secondary where it is
       used, and carries no more weight than that warrants.
+- [ ] All six areas appear in "Where each area points" — an area with nothing new still gets a row that
+      says so, never a dropped row.
+- [ ] No area's net read contradicts its own rows in the data-streams table. If the roll-up and the rows
+      disagree, the rows are right and the roll-up is wrong.
+- [ ] Every area row names its counter-current, or states explicitly that nothing material pulls the
+      other way.
+- [ ] No area resting only on `(feedback)` streams is given a direction as though it were a cause, or a
+      strength above `amplifier only`.
+- [ ] "Where each area points" is a roll-up only — it introduces no reading, no lean, and no claim that
+      does not already appear below it, and it contains no overall all-areas verdict.
 
 ## Boundaries
 
