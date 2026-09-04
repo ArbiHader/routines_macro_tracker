@@ -48,6 +48,13 @@ polarity:  conditional: depends — buybacks/issuance shifts that raise demand f
 fetch:     source: Treasury quarterly refunding announcements + buyback operations · depth: current + change log · type: status
 notes:     —
 
+### govt-shutdown: US government funding / shutdown risk
+category:  macro-monetary
+impact:    BTC price
+polarity:  single-direction: a shutdown furloughs federal workers, delays the BLS/BEA data releases the Fed relies on, and is a real (if historically muted) fiscal drag, so continued/resolved funding is bullish and a lapse into shutdown is bearish
+fetch:     source: congress.gov appropriations/bill-tracker status + wire coverage (AP/Reuters/The Hill) of CR votes and the President's signature · depth: current status + change log · type: status
+notes:     added 2026-09-03. 2026 has already seen two shutdowns (a full shutdown Jan 31–Feb 3, and a DHS-only lapse Feb 14–Apr 30), both tied to disputes over immigration enforcement after CBP agents killed Alex Pretti; equities largely shrugged both off, but BLS had to delay/reschedule jobs and other releases each time — the clearer transmission channel here is the Fed's data blackout, not a direct equity/BTC hit. A CR (H.R. 6500) passed both chambers (Senate 90-6, House 370-48 on 2026-09-01) and was signed into law 2026-09-02, funding the government through Dec 11, 2026, defusing the Oct 1 FY2027 cliff — confirmed independently (UPI, ABC News, The Hill, Defense One). Only 2 of 12 FY2027 appropriations bills have passed the House and none the Senate, so expect another funding fight near Dec 11 — track that date as the next decision point, not the (now defused) Oct 1 one.
+
 ### cpi: CPI / Core CPI
 category:  macro-monetary
 impact:    fed-funds-path
@@ -116,9 +123,16 @@ notes:     —
 ### gold: Gold price (and BTC–gold correlation)
 category:  cross-asset
 impact:    BTC price
-polarity:  conditional: depends — BTC starting to follow gold's rise (a rising BTC–gold correlation) would be bullish; not yet a confirmed trend
+polarity:  conditional: depends — BTC starting to follow gold's rise (a rising BTC–gold correlation) would be bullish; the trend has strengthened but a single-window correlation reading is still not proof it holds
 fetch:     source: spot gold + BTC–gold 90-day correlation · depth: last 5 daily + the latest correlation reading · type: numeric
-notes:     the conditional trigger is BTC beginning to track gold (corr jumped to ~0.52, a 5y high)
+notes:     the conditional trigger has strengthened materially since seed: the 90-day BTC–gold correlation reached ~0.86 in the first week of September 2026 (a 6-year high, since Covid-2020), up from the ~0.52 5-year-high reading at catalog seed — confirmed independently across multiple outlets (The Block, Yahoo Finance, Bloomingbit, TFTC). Gold itself is near all-time highs (~$4,540/oz). Coverage frames this as a "debasement trade" (BTC and gold both bid on fiat-purchasing-power concerns) coinciding with BTC's correlation to the S&P 500 falling to ~0.18 over the same window — i.e. BTC is reportedly decoupling from equities and coupling to gold at the same time. Treat as a strengthening pattern, not yet a structural fact — a few weeks of one macro regime is not a permanent correlation.
+
+### boj-carry-trade: BOJ policy & yen carry-trade unwind risk
+category:  cross-asset
+impact:    BTC price (fast path)
+polarity:  event-resolution: a hawkish surprise (an outsized BOJ hike) risks forcing a rapid unwind of yen-funded leveraged positions across global risk assets — the Aug-2024 BOJ-hike precedent, when a comparable unwind produced a sharp, fast BTC selloff alongside equities — so a dovish/as-priced outcome is bullish and a larger-than-expected hike is bearish
+fetch:     source: Bank of Japan policy statement (boj.or.jp) + USD/JPY spot + primary coverage of carry-trade positioning (Reuters/Bloomberg) · depth: current status + change log · type: status
+notes:     added 2026-09-04 (verified across Bloomberg, CNBC, Vantage Markets, FXStreet, independently of each other): BOJ held its policy rate at 1% on 2026-07-31 but officials (Ueda, Takata, Himino) spent the following month talking up the odds of a hike at the next decision, 2026-09-18; the yen has already firmed on carry-trade-unwind flows and intervention talk (Bloomberg reported a "carry trade exodus" as of 2026-09-04). This is a live, dated trigger — track the Sept-18 decision and the size of any hike relative to what's priced, not a generic BOJ-watch.
 
 ### credit-spreads: Credit spreads
 category:  cross-asset
@@ -141,7 +155,7 @@ category:  crypto-structural
 impact:    BTC price
 polarity:  event-resolution: the government keeping its coins instead of selling them (and any accumulation) is bullish
 fetch:     source: SBR executive order + Treasury/White House statements · depth: current + change log · type: status
-notes:     as of this run the SBR is a hold-only directive (~328,372 BTC from seizures/forfeitures), not an accumulation mandate — Treasury stated the US "won't be buying" more; Treasury and Commerce are in an unresolved turf war over who administers it. Open-market purchases would require the BITCOIN Act (Senate) or its House companion (Begich's ARMA) to pass — track passage odds, not the current hold-only baseline, as the bullish trigger.
+notes:     as of this run the SBR is a hold-only directive (~328,372 BTC from seizures/forfeitures), not an accumulation mandate — Treasury stated the US "won't be buying" more; Treasury and Commerce are in an unresolved turf war over who administers it. Open-market purchases would require the BITCOIN Act (Senate) or its House companion (Begich's ARMA) to pass — track passage odds, not the current hold-only baseline, as the bullish trigger. ARMA (American Reserve Modernization Act of 2026) was introduced 2026-05-21 by Reps. Begich (AK) and Golden (ME) with 17 bipartisan original co-sponsors — confirmed via Begich's own House.gov release; it would set a 20-year minimum hold and directs a study of budget-neutral acquisition strategies (no tax hikes/deficit spending), not a hard purchase target — treat any specific BTC-amount figure from secondary crypto-media as unconfirmed. The Senate's Lummis BITCOIN Act remains parked in the Banking Committee; ARMA is the more likely near-term vehicle, watch for House floor action ahead of the Nov 2026 midterms.
 
 ### halving-timeline: Halving schedule
 category:  crypto-structural
@@ -176,14 +190,14 @@ category:  crypto-structural
 impact:    BTC price
 polarity:  event-resolution: clear, supportive stablecoin rules are bullish (they deepen on-ramps); a restrictive turn is bearish
 fetch:     source: relevant legislation + Treasury/regulatory statements · depth: current + change log · type: status
-notes:     —
+notes:     GENIUS Act implementation is progressing on schedule (confirmed via federalregister.gov + occ.gov, not just secondary coverage): Treasury issued a Notice of Proposed Rulemaking 2026-08-18 on when a stablecoin is "issued" in the US and what counts as offering/selling to a US person; comments due 2026-10-19; the Act takes effect 2026-01-18, with unlicensed-issuer stablecoins barred from US offer/sale starting 2028-07-18. Distinct from the separate stablecoin-supply stream's yield-elimination effect — this row tracks the regulatory-clarity channel, not the flow-magnitude channel.
 
 ### sec-cftc-posture: SEC / CFTC posture
 category:  crypto-structural
 impact:    BTC price
 polarity:  event-resolution: a more accommodative enforcement/rulemaking posture is bullish; a hostile turn is bearish
 fetch:     source: SEC / CFTC actions and statements · depth: current + change log · type: status
-notes:     —
+notes:     on 2026-08-18 the SEC proposed "Regulation Crypto Assets" (confirmed via sec.gov press release + commissioner statements, independent of secondary coverage) — a tailored offering regime with a startup exemption (up to $5M/4yr), a fundraising exemption (up to $75M/12mo), and a conditional safe harbor letting an issuer "delink" a token from its original investment-contract status; public comments due 2026-10-20. Read as a continuation of the accommodative posture, not a reversal.
 
 ### sbr-legal-durability: SBR legal durability
 category:  crypto-structural
@@ -313,7 +327,7 @@ category:  geopolitical
 impact:    BTC price (fast path)
 polarity:  event-resolution: the conflict/blockade calming down is bullish; escalation (tanker attacks, closure) is bearish via a fast risk-off shock
 fetch:     source: multiple outlets, primary where possible · depth: current status + recent-change log · type: status
-notes:     this is no longer a latent risk — an active US-Iran war ("Operation Epic Fury") began 2026-02-28 and passed its 6-month mark in late August 2026; Iran claims the Strait remains closed and requires its coordination for passage, shipping traffic stays well below normal, and 70+ attacks on commercial shipping have been recorded. Oman/Qatar are mediating a possible temporary shipping corridor. Track for a ceasefire/corridor deal (bullish) vs. further escalation (bearish), not a binary "war starts" trigger — that already happened. Escalated further as of early Sept 2026 (confirmed via UN News, NPR, NBC's ship-traffic tracker): a brief April ceasefire broke down in July; the Strait is now effectively closed (~6 ships/day transiting vs. ~85/day normal, ~465 vessels holding position, ~6,000 seafarers stranded); Iran has widened its shipping blacklist to 56 vessels and moved to formally ban US/Israeli-linked ships while charging a toll to others; further tanker attacks (incl. one killing two Filipino seafarers) have occurred. No corridor/ceasefire deal has materialized — read the trend as still escalating, not stabilized.
+notes:     this is no longer a latent risk — an active US-Iran war ("Operation Epic Fury") began 2026-02-28 and passed its 6-month mark in late August 2026; Iran claims the Strait remains closed and requires its coordination for passage, shipping traffic stays well below normal, and 70+ attacks on commercial shipping have been recorded. Oman/Qatar are mediating a possible temporary shipping corridor. Track for a ceasefire/corridor deal (bullish) vs. further escalation (bearish), not a binary "war starts" trigger — that already happened. Escalated further as of early Sept 2026 (confirmed via UN News, NPR, NBC's ship-traffic tracker): a brief April ceasefire broke down in July; the Strait is now effectively closed (~6 ships/day transiting vs. ~85/day normal, ~465 vessels holding position, ~6,000 seafarers stranded); Iran has widened its shipping blacklist to 56 vessels and moved to formally ban US/Israeli-linked ships while charging a toll to others; further tanker attacks (incl. one killing two Filipino seafarers) have occurred. No corridor/ceasefire deal has materialized — read the trend as still escalating, not stabilized. Sharp new escalation confirmed 2026-09-01/02 (independently via Axios, Al Jazeera, Gulf News, Reuters/RFE-RL, Times of Israel, thenationalnews.com, globalsecurity.org — this is well beyond a single-source claim): the US struck ~100 IRGC targets including, for the first time, two Iranian government tankers, under a new Trump-approved "tanker for tanker" policy (a US strike on an Iranian tanker for every Iranian attack on a transiting tanker); Iran retaliated with ~25 ballistic missiles and drones against US-linked targets in Bahrain (Sheikh Isa Airbase), Kuwait (Ali Al Salem airbase command/residence), Jordan (13 missiles entered airspace, 10 intercepted), and Erbil, Iraq — no US casualties reported, Iranian state media claims strikes killed civilians incl. a wedding party. The conflict has now materially broadened beyond Hormuz/shipping into direct exchanges with Gulf-state and Iraqi territory. Iran's FM stated (late Aug) the two sides do "not have anything like a ceasefire"; Qatar/Pakistan are passing messages but this is not active negotiation. Read as still escalating and now wider in scope, not stabilizing. Background timeline (Wikipedia's sourced timeline, cross-checked against the pattern already on file): the June 17, 2026 Trump-Pezeshkian memorandum of understanding that briefly reopened the strait collapsed by July 8 (Iran struck multiple commercial ships) and both sides now treat it as void, with sporadic attacks continuing through August; separately, US officials confirmed ongoing mine-clearing operations, having identified 100+ suspected mines as of Aug 25. No successor deal is under active negotiation as of this run.
 
 ### russia-nato: Russia–NATO tension
 category:  geopolitical
@@ -327,7 +341,7 @@ category:  geopolitical
 impact:    BTC price (fast path)
 polarity:  event-resolution: a genuine diplomatic breakthrough / de-escalation is bullish; major escalation is bearish
 fetch:     source: multiple outlets, primary where possible · depth: current status + change log · type: status
-notes:     mostly below the threshold that moves BTC on its own. As of late Aug 2026 (Reuters/Kyiv sources), Ukraine's Budanov floated a possible resumption of trilateral (Russia-Ukraine-US) talks in September covering a ceasefire and security guarantees, but Russia's Lavrov has publicly rejected any ceasefire that freezes the current front line — track for an actual signed deal (bullish) vs. this remaining talk-about-talks (no change), not a photo-op or an announced-but-unsigned framework.
+notes:     mostly below the threshold that moves BTC on its own. As of late Aug 2026 (Reuters/Kyiv sources), Ukraine's Budanov floated a possible resumption of trilateral (Russia-Ukraine-US) talks in September covering a ceasefire and security guarantees, but Russia's Lavrov has publicly rejected any ceasefire that freezes the current front line — track for an actual signed deal (bullish) vs. this remaining talk-about-talks (no change), not a photo-op or an announced-but-unsigned framework. As of this run, the Kremlin has separately stated talks are on hold with no new proposals on the table — read as stalled, not advancing toward the floated September trilateral.
 
 ### china-taiwan: China–Taiwan tensions
 category:  geopolitical
@@ -348,14 +362,14 @@ category:  geopolitical
 impact:    BTC price (fast path)
 polarity:  event-resolution: things returning to normal is bullish; a regional flare-up is bearish
 fetch:     source: multiple outlets · depth: current status + change log · type: status
-notes:     the acute shock already happened — US forces captured Maduro on 2026-01-03 in a large-scale strike ("Operation Absolute Resolve"); he faces narco-terrorism charges in the SDNY. Delcy Rodríguez is acting president; the US (via Rubio) is running a 3-phase stabilization/transition plan, with talks that began 2026-08-06. Situation remains domestically unstable (reports of intensified repression) but there is no active US military conflict as of this run — watch for a fresh flare-up (bearish) or a settled transition (bullish), not the already-priced capture event.
+notes:     the acute shock already happened — US forces captured Maduro on 2026-01-03 in a large-scale strike ("Operation Absolute Resolve"); he faces narco-terrorism charges in the SDNY. Delcy Rodríguez is acting president; the US (via Rubio) is running a 3-phase stabilization/transition plan, with talks that began 2026-08-06. Situation remains domestically unstable (reports of intensified repression) but there is no active US military conflict as of this run — watch for a fresh flare-up (bearish) or a settled transition (bullish), not the already-priced capture event. Confirmed independently (Congress.gov CRS report, rsbnetwork.com, Fox News) as of this run: Trump announced a deal with the interim government granting the US control over 65M barrels of Venezuelan oil, described as not impeding the "democratic transition"; opposition figures González Urrutia and Machado remain excluded from power with no sign the interim regime will open institutions to them; a June 24, 2026 pair of earthquakes killed 6,100+ and has complicated stabilization efforts. Net effect is still no active US military conflict — a step toward economic normalization, offset by continued exclusion of the opposition and a fresh humanitarian shock.
 
 ### us-infra-cyber: US critical-infrastructure cyberattack risk
 category:  geopolitical
 impact:    BTC price (fast path)
 polarity:  event-resolution: no attack happening is bullish; a major confirmed attack is bearish via a fast shock
 fetch:     source: CISA/FBI/EPA advisories + coverage · depth: current status + change log · type: status
-notes:     —
+notes:     elevated as of 2026-09 — Iranian-linked hackers are targeting US water, energy, and telecom infrastructure amid the ongoing Iran conflict (see iran-hormuz); the FBI is separately investigating a campaign against municipal water systems across 7+ states (30+ facilities hit in Minnesota alone). Earlier in the year DOJ/FBI disrupted a China-nexus campaign (the QTFY group's QScan/QTRouter platforms) targeting US critical-infrastructure providers. CISA's own advisory (dated Jul 22, updating an original Apr 7 advisory), read directly for the first time by this run's Fetcher, states verbatim that this activity "has disrupted PLCs across several U.S. critical infrastructure sectors... resulting in operational disruption and financial loss" — this is a confirmed successful-attack reading (remote password/IP lockouts, pressure loss, boil-water advisories, localized flooding; no confirmed drinking-water contamination), not merely thwarted intrusion attempts as the prior seed note assumed. The bearish trigger this stream tracks has fired at moderate severity — track for a further, more severe incident vs. containment/hardening.
 
 ### trade-policy-tariffs: Trade policy / tariffs
 category:  geopolitical
